@@ -1,0 +1,9 @@
+.header {
+  display: grid;
+  height: 200px;
+  width: 100%;
+  grid-template-areas: "section";
+  grid-template-columns: max-content;
+  justify-content: center;
+  align-items: center;
+}

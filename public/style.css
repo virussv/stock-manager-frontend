@@ -1,0 +1,19 @@
+@font-face  {
+  font-family: 'inkfree';
+  src: url('./Inkfree.ttf') format('truetype');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  --bg-color: #000011;
+  --primary-color: #6100c6;
+  --light-white: #cacaca;
+  --logoFont: 'inkfree';
+}
+
+body {
+  background-color: var(--bg-color);
+}
