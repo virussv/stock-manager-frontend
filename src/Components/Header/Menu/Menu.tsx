@@ -1,8 +1,15 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { SyntheticEvent } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Menu.module.css';
 
-const Menu:React.FC = () => {
-  const [active,setActive] = useState<boolean>(false);
+interface IMenuProps {
+  states: {
+    active: boolean,
+    setActive: React.Dispatch<React.SetStateAction<boolean>>
+  }
+}
+
+const Menu:React.FC<IMenuProps> = ({states: {active,setActive}}) => {
   function handleClick(event:SyntheticEvent):void {
     const button = event.target as HTMLButtonElement;
     button.style.pointerEvents = 'none';
@@ -10,7 +17,7 @@ const Menu:React.FC = () => {
     setTimeout(() => {
       button.style.pointerEvents = 'initial';
     }, 500);
-  } 
+  }
 
   return (
     <React.Fragment>
@@ -18,9 +25,18 @@ const Menu:React.FC = () => {
       </button>
       <nav className={`${styles.nav} ${active ? styles.active : ''}`}>
         <ul className={styles.ul}>
-          <li><span className='material-symbols-outlined'>inventory_2</span><a href='#'>Meu estoque</a></li>
+          <li>
+            <span className='material-symbols-outlined'>home</span>
+            <Link onClick={() => setActive((t) => !t)} to={'/'}>Home</Link>
+          </li>
           <span className={styles.line}></span>
-          <li><span className='material-symbols-outlined'>attach_money</span><a href='#'>Finanças</a></li>
+          <li>
+            <span className='material-symbols-outlined'>inventory_2</span>
+            <Link onClick={() => setActive((t) => !t)} to={'/estoque'}>estoque</Link>
+          </li>
+          <span className={styles.line}></span>
+          <li>
+            <span className='material-symbols-outlined'>attach_money</span><Link onClick={() => setActive((t) => !t)} to={'/financas'}>Financas</Link></li>
           <li>
             <form>
               <button className={styles.logout}>Sair da Conta</button>

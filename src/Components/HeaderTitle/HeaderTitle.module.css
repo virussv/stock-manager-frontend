@@ -1,0 +1,47 @@
+.titles h1{
+  font-family: var(--primary-font);
+  font-size: 2.5rem;
+  margin-right: 20px;
+  color: var(--light-white);
+}
+
+.titles h2 {
+  font-family: var(--primary-font);
+  margin-left: 21px;
+  font-size: 2rem;
+  position: relative;
+  bottom: 15px;
+  padding-right: 5px;
+  color: #6100c6;
+  box-shadow: 3px 4px 4px 0px;
+}
+
+.titles.active h1 {
+  animation: .5s forwards enterTitlesh1;
+}
+
+.titles.active h2 {
+  animation: .5s forwards enterTitlesh2;
+}
+
+@keyframes enterTitlesh1 {
+  from {
+    transform: translateX(-55px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes enterTitlesh2 {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
