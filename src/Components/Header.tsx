@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
 import Menu from './Header/Menu/Menu';
-import HeaderTitle from './HeaderTitle/HeaderTitle';
+import HeaderTitle from './Header/HeaderTitle/HeaderTitle';
 import { useLocation } from 'react-router';
 
 const Header:React.FC = () => {

@@ -1,0 +1,175 @@
+.createProduct {
+  transition: .5s;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -45%,0px);
+  background-color: var(--bg-color);
+  border: 1px solid white;
+  width: 300px;
+  height: 360px;
+  padding: 10px;
+
+  display: grid;
+  grid-template-rows: 150px repeat(3,60px);
+  justify-content: center;
+  align-items: center;
+  font-family: var(--primary-font);
+  font-weight: 600;
+}
+
+.createProduct:first-child {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkBox {
+  position: relative;
+}
+
+.createProduct.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(-50%, -50%,0px);
+}
+
+
+.createProduct div {
+  width: max-content;
+}
+
+/****************general****************/
+
+.createProduct .containerStock,.createProduct .containerSales {
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+}
+
+.createProduct label,p {
+  color: white;
+  padding: 2px 0px;
+  font-size: 0.96rem;
+}
+
+/***************img****************/
+/* small workaround for custom inputFile with accessibility*/
+
+.createProduct .containerImg {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  width: 187px;
+}
+
+.containerImg input[type='file'] {
+  position: relative;
+  color: transparent;
+  padding: 5px 0px;
+  margin: 5px 0px;
+}
+
+.containerImg input[type='file']::after {
+  content: 'Escolher Imagem';
+  color: white;
+  padding-top: 3px;
+  padding-left: 6px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  display: block;
+  position: absolute;
+  top: 5px;
+  border: 1px solid #dbdbdb61;
+  background-color: var(--primary-color);
+  height: 21px;
+  width: 115px;
+  border-radius: 5px;
+}
+
+.containerImg img {
+  padding-top: 15px;
+  width: 50px;
+  align-self: center;
+}
+
+/***************Size***************/
+/* small workaround for custom checkbox with accessibility*/
+
+.containerSizes p {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.containerSizes .checkBox {
+  display: flex;
+}
+
+.containerSizes .checkBox label {
+  position: relative;
+  padding: 0 5px;
+  font-weight: 600;
+}
+
+.containerSizes .checkBox label:nth-child(4),.containerSizes .checkBox label:nth-child(8) {
+  color: var(--primary-color);
+}
+
+.containerSizes .checkBox label:first-child {
+  padding-left: 0px;
+}
+
+.containerSizes .checkBox label::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -13px;
+  top: 2px;
+  border-radius: 3px;
+  border: 1px solid #dbdbdb61;
+  background-color: var(--light-white);
+  height: 12px;
+  width: 12px;
+}
+
+.containerSizes .checkBox label:nth-child(4)::after,.containerSizes .checkBox label:nth-child(8)::after  {
+  background-color: var(--primary-color);
+}
+
+.containerSizes .checkBox input:checked + label::after {
+  background-color: #0000ff70;
+}
+
+/***************Stock***************/
+.createProduct .containerStock label {
+  padding: 4px 0px;
+}
+
+.createProduct .containerStock input{
+  font-family: var(--primary-font);
+  font-weight: 600;
+  background-color: var(--light-white);
+  border: 1px solid #dbdbdb61;
+  border-radius: 2px;
+  outline: none;
+  color: black;
+  padding: 3px;
+}
+
+/***************Sales***************/
+
+.createProduct .containerSales label {
+  padding: 4px 0px;
+}
+
+.createProduct .containerSales input{
+  font-family: var(--primary-font);
+  font-weight: 600;
+  background-color: var(--primary-color);
+  border: 1px solid #dbdbdb61;
+  border-radius: 2px;
+  outline: none;
+  color: var(--light-white);
+  padding: 3px;
+}

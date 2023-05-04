@@ -18,3 +18,9 @@
 body {
   background-color: var(--bg-color);
 }
+
+.alpha {
+  transition: .5s;
+  opacity: .1;
+  pointer-events: none;
+}

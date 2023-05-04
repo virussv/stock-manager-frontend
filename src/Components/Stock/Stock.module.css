@@ -1,0 +1,103 @@
+@keyframes enterSection {
+  from  {
+    opacity: 0;
+    transform: translateY(-15px);
+  } to {
+    opacity: 1;
+    transform: translateY(15px);
+  }
+}
+
+.stock {
+  animation: .5s forwards enterSection;
+}
+
+.stock div {
+  display: flex;
+  width: 285px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.stock div button {
+  border-radius: 10px;
+  height: 29px;
+  width: 31px;
+  padding: 2px;
+  background: var(--primary-color);
+  color: var(--light-white);
+  border: 1px solid #dbdbdb61;
+}
+
+.stock div p {
+  color: var(--light-white);
+  padding-top: 6px;
+  padding-left: 10px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+}
+
+.stock div button span {
+  font-weight: 600;
+}
+
+.stockTable {
+  border-collapse:collapse;
+  margin: auto;
+}
+
+.stockTable thead tr th {
+  font-family: var(--primary-font);
+  color: var(--light-white);
+  font-weight: 600;
+  padding: 0 5px;
+  padding-bottom: 5px;
+}
+
+.stockTable thead tr th:nth-child(even) {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.stockTable tbody tr.alpha {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.stockTable tbody tr td {
+  position: relative;
+  color: white;
+  padding: 15px 0px;
+  text-align: center;
+  font-family: var(--primary-font);
+  border-top: 1px solid var(--light-white);
+  font-weight: 600;
+}
+
+.stockTable tbody tr:last-child {
+  border-bottom: 1px solid var(--light-white);
+}
+
+.stockTable tbody tr td:nth-child(even) {
+  color: var(--primary-color);
+  background-color: #ffffff1f;
+}
+
+.stockTable tbody tr td button  {
+  position: absolute;
+  background: none;
+  border: none;
+  top: 0;
+  left: -7px;
+}
+
+.stockTable tbody tr td button span {
+  color: white;
+  font-size: 1.4rem;
+  transform: rotate(277deg);
+}
+
+.productImage {
+  width: 50px;
+}
