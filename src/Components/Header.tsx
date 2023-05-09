@@ -5,7 +5,7 @@ import HeaderTitle from './Header/HeaderTitle/HeaderTitle';
 import { useLocation } from 'react-router';
 
 const Header:React.FC = () => {
-  const [active,setActive] = useState<boolean>(false);
+  const [activeMenu,setActiveMenu] = useState<boolean>(false);
   const location = useLocation().pathname.replace('/','');
 
   function getTitle():{h1: string,h2: string} {
@@ -24,7 +24,7 @@ const Header:React.FC = () => {
   return (
     <header className={styles.header}>
       <HeaderTitle titles={{...getTitle()}}/>
-      <Menu states={{active,setActive}}/>
+      <Menu states={{activeMenu,setActiveMenu}}/>
     </header>
   )
 }

@@ -28,6 +28,7 @@
   background: var(--primary-color);
   color: var(--light-white);
   border: 1px solid #dbdbdb61;
+  cursor: pointer;
 }
 
 .stock div p {

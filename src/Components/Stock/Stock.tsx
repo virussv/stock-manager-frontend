@@ -4,7 +4,7 @@ import shirt from './../../Assets/images/shirt.png';
 import CreateProduct from './ModalCreateProduct/CreateProduct';
 
 const Stock:React.FC = () => {
-  const [active,setActive] = useState(false);
+  const [activeModal,setActiveModal] = useState(false);
   const mainContent = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -14,12 +14,12 @@ const Stock:React.FC = () => {
       const header = document.querySelector('header');
       header instanceof HTMLElement && header.classList.toggle('alpha');  
     } 
-  },[active])
+  },[activeModal])
 
   function handleClick(event:SyntheticEvent) {
     if(event.target instanceof HTMLSpanElement) {
       const button = event.target.parentNode as HTMLButtonElement;
-      setActive((t) => !t);
+      setActiveModal((t) => !t);
       button.disabled = true;
       setTimeout(() => {
         button.disabled = false;
@@ -58,7 +58,7 @@ const Stock:React.FC = () => {
           </table>
         </section>
       </main>
-      <CreateProduct states={{active,setActive}}/>
+      <CreateProduct states={{activeModal,setActiveModal}}/>
     </React.Fragment>
   );
 };

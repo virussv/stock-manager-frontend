@@ -1,47 +1,109 @@
-import React, { useRef } from 'react';
+import React, { MouseEvent, SyntheticEvent, useRef, useState } from 'react';
 import styles from './CreateProduct.module.css';
 import camisa from '../../../Assets/images/shirt.png';
 
 interface ICreateProductProps {
   states: {
-    active: boolean,
-    setActive: React.Dispatch<React.SetStateAction<boolean>>
+    activeModal: boolean,
+    setActiveModal: React.Dispatch<React.SetStateAction<boolean>>
   }
 }
 
-const CreateProduct:React.FC<ICreateProductProps> = ({states:{active,setActive}}) => {
-  const modalRef = useRef<HTMLDivElement>(null);
+type TSizeProps = [
+  m:string,
+  p:string,
+  g:string,
+  gg:string,
+];
+
+window.addEventListener('suspend',() => {
+  window.alert('k');
+});
+
+const arraySizes:TSizeProps = ['m','p','g','gg'];
+
+const CreateProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActiveModal}}) => {
+  const modalRef = useRef<HTMLFormElement | null>(null);
+  const loadingFile = useRef<HTMLDivElement | null>(null);
+  const inputFile = useRef<HTMLInputElement | null>(null);
+  //this is product size.Here i don't type with TSizeprops because when i use the rest with value to be placed in setSizes it infers one more string in type, causing a bug because one more param was inferred
+  const [sizes,setSizes] = useState<string[] | []>([]);
+  //this is loadFile statement
+  const [activeLoadFile,setActiveLoadFile] = useState<boolean>(false);
+  //this is img display
+  const [img,setImg] = useState<string | null>(null);
+  //this is form submit
+  function handleSubmit(event:SyntheticEvent) {
+    event.preventDefault();
+  }
+
+  //input File
+  function handleChangeFile({ target }:SyntheticEvent) {
+    if(target instanceof HTMLInputElement && target.files) {
+      if(target.files[0]) {
+        //loading Image.After the state(setActiveLoadFile) change with the onLoad in img tag
+        setActiveLoadFile(true);
+        setImg(URL.createObjectURL(target.files[0]));
+      }
+    }
+  }
+
+  //input File
+  function handleClickFile({ target }:MouseEvent) {
+    setActiveLoadFile(true);
+  }
+
+  //input checkboxs
+  function handleChangeCheckBox({ target }:SyntheticEvent) {
+    if(target instanceof HTMLInputElement && arraySizes.includes(target.value)) {
+      if(target.checked) {
+        setSizes([...sizes,target.value]);
+      } else {
+        setSizes(sizes.filter((size) => size !== target.value));
+      }
+    }
+  }
+
   //Here I don't use useEffect because a bug occurs, due to the instantaneous execution of the function even with a timeout, it would cause the removeEventListener to be triggered quickly because a pointer down was called outside the container at the time of the click
-  function handleOutSideClick(event:Event) {
-    if(!modalRef.current?.contains(event.target as Node)) {
-      setActive(false);
-      document.removeEventListener('pointerdown',handleOutSideClick);
+  function handleOutSideClickModal({ target }:Event) {
+    if(!modalRef.current?.contains(target as Node)) {
+      setActiveModal(false);
+      document.removeEventListener('pointerdown',handleOutSideClickModal);
     }
   }
   setTimeout(() => {
-    document.addEventListener('pointerdown',handleOutSideClick);
+    document.addEventListener('pointerdown',handleOutSideClickModal);
   }, 500);
 
-
   return (
-    <div className={`${styles.createProduct} ${active ? styles.active : ''}`} ref={modalRef}>
+    <form method='post' className={`${styles.createProduct} ${activeModal ? styles.active : ''}`} onSubmit={handleSubmit} ref={modalRef} encType='multipart-data'>
       <div className={styles.containerImg}>
-        <input type='file' id='img'/>
+        <input type='file' id='img' accept='.jpg,.png' className={`${activeLoadFile ? styles.active : ''}`} onClick={handleClickFile} onBlur={() => setActiveLoadFile(false)} onChange={handleChangeFile} ref={inputFile}/>
         <p>Sua imagem ficara assim:</p>
-        <img src={camisa} alt='pre-visualização da camiseta'/>
+        <div className={styles.productPreview}>
+          <img src={img ? img : camisa} alt='pre-visualização da camiseta' onLoad={() => setActiveLoadFile(false)}/>
+        </div>
+
+
+        <div className={`${styles.loading} ${activeLoadFile ? styles.active : ''}`} ref={loadingFile}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
 
       <div className={styles.containerSizes}>
         <p>Tamanhos</p>
         <div className={styles.checkBox}>
-          <input type='checkbox' id='m'/>
-          <label htmlFor='m'>M</label>
-          <input type='checkbox' id='p'/>
-          <label htmlFor='p' id='p'>P</label>
-          <input type='checkbox' id='g'/>
-          <label htmlFor='g' id='g'>G</label>
-          <input type='checkbox' id='gg'/>
-          <label htmlFor='gg' id='gg'>GG</label>
+          {arraySizes.map((size) => {
+            return (
+              <label key={size} htmlFor={size}>
+                {size.toUpperCase()}
+                <input type='checkbox' id={size} onChange={handleChangeCheckBox} value={size}/>
+                <span className={styles.check}></span>
+              </label>
+            );
+          })}
         </div>
       </div>
 
@@ -55,7 +117,8 @@ const CreateProduct:React.FC<ICreateProductProps> = ({states:{active,setActive}}
         <input type='number' id='vendas'/>
       </div>
       
-    </div>
+      <button type='submit' className={styles.submit}>Cadastar Camiseta</button>
+    </form>
   )
 }
 
