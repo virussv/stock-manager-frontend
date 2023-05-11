@@ -30,6 +30,7 @@
   color: var(--primary-color);
   margin: 10px 10px 0px 0px;
   z-index: 999;
+  cursor: pointer;
 }
 
 .menu_button::before,.menu_button::after{

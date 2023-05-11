@@ -15,7 +15,6 @@
   color: #6100c6;
   box-shadow: 3px 4px 4px 0px;
 }
-
 .titles.active h1 {
   animation: .5s forwards enterTitlesh1;
 }

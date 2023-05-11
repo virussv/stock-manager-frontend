@@ -8,12 +8,16 @@ const Stock:React.FC = () => {
   const mainContent = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if(mainContent.current) {
-      mainContent.current.classList.toggle('alpha');
-
-      const header = document.querySelector('header');
-      header instanceof HTMLElement && header.classList.toggle('alpha');  
-    } 
+    const header = document.querySelector('header');
+    if(mainContent.current && header instanceof HTMLElement) {
+      if(activeModal) {
+        mainContent.current.classList.add('alpha');
+        header.classList.add('alpha');  
+      } else {
+        mainContent.current.classList.remove('alpha');
+        header.classList.remove('alpha'); 
+      }
+    }
   },[activeModal])
 
   function handleClick(event:SyntheticEvent) {

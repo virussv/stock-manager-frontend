@@ -16,10 +16,6 @@ type TSizeProps = [
   gg:string,
 ];
 
-window.addEventListener('suspend',() => {
-  window.alert('k');
-});
-
 const arraySizes:TSizeProps = ['m','p','g','gg'];
 
 const CreateProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActiveModal}}) => {

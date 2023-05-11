@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { ITitle } from '../../Header';
 import styles from './HeaderTitle.module.css';
 
 interface IHeaderTitleProps {
-  titles: {
-    h1: string,
-    h2: string,
-  };
+  states: {
+    title: ITitle,
+    setTitle: React.Dispatch<React.SetStateAction<ITitle | undefined>>
+  }
 };
 
-const HeaderTitle:React.FC<IHeaderTitleProps> = ({titles: {h1,h2}}) => {
+const HeaderTitle:React.FC<IHeaderTitleProps> = ({states:{title,setTitle}}) => {
   const [animeTitle,setAnimeTitle] = useState<boolean>(false);
+
   useEffect(() => {
     setAnimeTitle(true);
     setTimeout(() => {
       setAnimeTitle(false);
     }, 500);
-  },[h1,h2]);
+  },[title]);
 
   return (
     <section className={`${styles.titles} ${animeTitle ? styles.active : ''}`}>
-      <h1>{h1}</h1>
-      <br />
-      <h2>{h2}</h2>
+      <h1>{title.h1}</h1>
+      <br/>
+      <h2>{title.h2}</h2>
     </section>
   );
 };
