@@ -20,15 +20,22 @@ const Stock:React.FC = () => {
     }
   },[activeModal])
 
-  function handleClick(event:SyntheticEvent) {
-    if(event.target instanceof HTMLSpanElement) {
-      const button = event.target.parentNode as HTMLButtonElement;
+  //the span is the icon,but i check the button as well for accessibility scripts
+  function handleClick({ target }:SyntheticEvent) {
+    let button:HTMLButtonElement | undefined;
+    if(target instanceof HTMLSpanElement) {
+      button = target.parentNode as HTMLButtonElement;
+    } else if(target instanceof HTMLButtonElement) {
+      button = target as HTMLButtonElement;
+    }
+
+    if(button instanceof HTMLButtonElement) {
       setActiveModal((t) => !t);
       button.disabled = true;
       setTimeout(() => {
-        button.disabled = false;
+        button && (button.disabled = false);
       }, 500);
-    };
+    }
   };
 
   return (

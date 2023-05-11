@@ -97,7 +97,7 @@
   background-color: var(--primary-color);
   height: 21px;
   width: 141px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .containerImg input[type='file'].active::after {

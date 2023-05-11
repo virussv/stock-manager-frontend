@@ -5,11 +5,10 @@ import styles from './HeaderTitle.module.css';
 interface IHeaderTitleProps {
   states: {
     title: ITitle,
-    setTitle: React.Dispatch<React.SetStateAction<ITitle | undefined>>
   }
 };
 
-const HeaderTitle:React.FC<IHeaderTitleProps> = ({states:{title,setTitle}}) => {
+const HeaderTitle:React.FC<IHeaderTitleProps> = ({states:{title}}) => {
   const [animeTitle,setAnimeTitle] = useState<boolean>(false);
 
   useEffect(() => {

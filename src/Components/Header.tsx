@@ -30,7 +30,7 @@ const Header:React.FC = () => {
 
   return (
     <header className={styles.header}>
-      {title && <HeaderTitle states={{title,setTitle}}/>}
+      {title && <HeaderTitle states={{title}}/>}
       <Menu states={{activeMenu,setActiveMenu}}/>
     </header>
   )
