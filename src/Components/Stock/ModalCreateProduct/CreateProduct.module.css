@@ -9,11 +9,11 @@
   background-color: var(--bg-color);
   border: 1px solid white;
   width: 300px;
-  height: 430px;
+  height: 448px;
   padding: 10px;
 
   display: grid;
-  grid-template-rows: 150px repeat(3,60px) 90px;
+  grid-template-rows: 150px 200px 85px;
   justify-content: center;
   align-items: center;
   font-family: var(--primary-font);
@@ -184,76 +184,13 @@
 
 /***************Sizes product***************/
 
-.containerSizes p {
-  color: var(--primary-color);
-  font-weight: 600;
+.containerStockSizes {
+  display: grid;
+  grid-template-columns: .5fr .5fr;
+  margin: auto;
 }
 
-.containerSizes label {
-  position: relative;
-}
-
-.containerSizes .checkBox {
-  display: flex;
-}
-
-.containerSizes .checkBox label input{
-  position: relative;
-  padding: 0 3px;
-  font-weight: 600;
-}
-
-.containerSizes .checkBox label:nth-child(2),.containerSizes .checkBox label:nth-child(4){
-  color: var(--primary-color);
-}
-
-.containerSizes .checkBox label:nth-child(2) input::after,.containerSizes .checkBox label:nth-child(4) input::after  {
-  background-color: var(--primary-color);
-}
-
-.containerSizes .checkBox label:first-child {
-  padding-left: 0px;
-}
-
-.containerSizes .checkBox label input::after {
-  content: '';
-  display: block;
-  border-radius: 2px;
-  border: 1px solid #dbdbdb61;
-  background-color: var(--light-white);
-  height: 14px;
-  width: 14px;
-}
-
-.containerSizes .checkBox label input {
-  margin: 0px 8px;
-}
-
-.check {
-  display: none;
-  transform: rotate(45deg);
-  height: 10px;
-  width: 6px;
-  border-bottom: 2px solid #78b13f;
-  border-right: 2px solid #78b13f;
-  position: absolute;
-  top: 8px;
-  right: 10px;
-}
-
-.containerSizes .checkBox label:nth-child(1) .check,.containerSizes .checkBox label:nth-child(3) .check{
-  border-color: rgb(34 80 29);
-}
-
-.containerSizes .checkBox label input:checked + .check{
-  display: inline-block;
-}
-/***************Stock***************/
-.createProduct .containerStock label {
-  padding: 4px 0px;
-}
-
-.createProduct .containerStock input{
+.containerStockSizes input{
   font-family: var(--primary-font);
   font-weight: 600;
   background-color: var(--light-white);
@@ -262,21 +199,38 @@
   outline: none;
   color: black;
   padding: 3px;
+  width: 48px;
+  margin: 3px;
 }
 
-/***************Sales***************/
-
-.createProduct .containerSales label {
-  padding: 4px 0px;
+.containerStockSizes input::placeholder {
+  color: #0000009c;
 }
 
-.createProduct .containerSales input{
-  font-family: var(--primary-font);
-  font-weight: 600;
+.containerStockSizes label,p {
+  margin: 3px;
+}
+
+.containerStockSizes input:nth-child(6),.containerStockSizes input:nth-child(10){
   background-color: var(--primary-color);
-  border: 1px solid #dbdbdb61;
-  border-radius: 2px;
-  outline: none;
-  color: var(--light-white);
-  padding: 3px;
+  color: white;
+}
+
+
+.containerStockSizes input:nth-child(6)::placeholder,.containerStockSizes input:nth-child(10)::placeholder {
+  color: rgba(255, 255, 255, 0.604);
+}
+
+.containerStockSizes label:nth-child(3),.containerStockSizes label:nth-child(7) {
+  color: var(--primary-color);
+}
+
+.total {
+  color: var(--primary-color);
+}
+
+/*for big numbers*/
+.totalStock {
+  overflow: hidden;
+  overflow-x: scroll;
 }

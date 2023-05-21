@@ -1,4 +1,4 @@
-import React, { MouseEvent, SyntheticEvent, useRef, useState } from 'react';
+import React, { SyntheticEvent, useRef, useState } from 'react';
 import styles from './CreateProduct.module.css';
 import camisa from '../../../Assets/images/shirt.png';
 
@@ -16,18 +16,32 @@ type TSizeProps = [
   gg:string,
 ];
 
-const arraySizes:TSizeProps = ['m','p','g','gg'];
+type stockAmount = {
+  m: number,
+  p: number,
+  g: number,
+  gg: number,
+}
+
+const arrayProductSizes:TSizeProps = ['m','p','g','gg'];
 
 const CreateProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActiveModal}}) => {
   const modalRef = useRef<HTMLFormElement | null>(null);
   const loadingFile = useRef<HTMLDivElement | null>(null);
   const inputFile = useRef<HTMLInputElement | null>(null);
-  //this is product size.Here i don't type with TSizeprops because when i use the rest with value to be placed in setSizes it infers one more string in type, causing a bug because one more param was inferred
-  const [sizes,setSizes] = useState<string[] | []>([]);
   //this is loadFile statement
   const [activeLoadFile,setActiveLoadFile] = useState<boolean>(false);
   //this is img display
   const [img,setImg] = useState<string | null>(null);
+  //this is stock count
+  const [stockAmount,setStockAmount] = useState<stockAmount>({
+    m: 0,
+    p: 0,
+    g: 0,
+    gg: 0,
+  });
+
+
   //this is form submit
   function handleSubmit(event:SyntheticEvent) {
     event.preventDefault();
@@ -45,18 +59,21 @@ const CreateProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setAct
   }
 
   //input File
-  function handleClickFile({ target }:MouseEvent) {
+  function handleClickFile() {
     setActiveLoadFile(true);
   }
 
-  //input checkboxs
-  function handleChangeCheckBox({ target }:SyntheticEvent) {
-    if(target instanceof HTMLInputElement && arraySizes.includes(target.value)) {
-      if(target.checked) {
-        setSizes([...sizes,target.value]);
-      } else {
-        setSizes(sizes.filter((size) => size !== target.value));
+  //stock
+  function handleChangeStock({ target }:SyntheticEvent) {
+    if(target instanceof HTMLInputElement && target.id in stockAmount) {
+      //verify the lenght of value
+      if(target.value.length > 4) {
+        target.value = target.value.substring(0,4);
       }
+      //changing dinamicly the stock value
+      const id = target.id as 'm' | 'p' | 'g' | 'gg';
+
+      setStockAmount((stock) => ({...stock,[id]: Number(target.value)}));
     }
   }
 
@@ -88,31 +105,23 @@ const CreateProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setAct
         </div>
       </div>
 
-      <div className={styles.containerSizes}>
-        <p>Tamanhos</p>
-        <div className={styles.checkBox}>
-          {arraySizes.map((size) => {
-            return (
-              <label key={size} htmlFor={size}>
-                {size.toUpperCase()}
-                <input type='checkbox' id={size} onChange={handleChangeCheckBox} value={size}/>
-                <span className={styles.check}></span>
-              </label>
-            );
-          })}
-        </div>
+      <div className={styles.containerStockSizes}>
+          <p>Tamanhos</p>
+          <p>Estoque</p>
+        {arrayProductSizes.map((size) => {
+          return (
+            <React.Fragment key={size}>
+                <label htmlFor={size}>{size.toUpperCase()}</label>
+                <input type='number' id={size} placeholder='0' onChange={handleChangeStock}/>
+            </React.Fragment>
+          )
+        })}
+        <p className={styles.total}>Total:</p>
+        <p className={styles.totalStock}>{Object.values(stockAmount).reduce((prevValue,currentValue) => {
+          //sum the stock value
+          return prevValue + currentValue;
+        })}</p>
       </div>
-
-      <div className={styles.containerStock}>
-        <label htmlFor='estoque'>Estoque</label>
-        <input type='number' id='estoque'/>
-      </div>
-
-      <div className={styles.containerSales}>
-        <label htmlFor='vendas'>Vendas</label>
-        <input type='number' id='vendas'/>
-      </div>
-      
       <button type='submit' className={styles.submit}>Cadastar Camiseta</button>
     </form>
   )
