@@ -93,15 +93,6 @@
   background-color: #ffffff1f;
 }
 
-.stockTable tbody tr td button  {
-  position: absolute;
-  background: none;
-  border: none;
-  top: 0;
-  left: -7px;
-  cursor: pointer;
-}
-
 .stockTable tbody tr td button span {
   color: white;
   font-size: 1.4rem;
@@ -110,4 +101,21 @@
 
 .productImage {
   width: 50px;
+}
+
+#editProduct {
+  position: absolute;
+  background: none;
+  border: none;
+  top: 0;
+  left: -7px;
+  cursor: pointer;
+}
+
+#createProduct:focus span {
+
+}
+
+.eventNone {
+  pointer-events: none;
 }

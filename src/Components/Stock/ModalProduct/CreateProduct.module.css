@@ -84,7 +84,6 @@
 }
 
 .containerImg input[type='file']::after {
-  content: 'Escolher uma Imagem';
   color: white;
   padding-top: 6px;
   padding-left: 6px;
@@ -98,6 +97,14 @@
   height: 21px;
   width: 141px;
   border-radius: 3px;
+}
+
+.containerImg input[type='file'].create::after {
+  content: 'Escolher uma Imagem';
+}
+
+.containerImg input[type='file'].edit::after {
+  content: 'Editar minha Imagem';
 }
 
 .containerImg input[type='file'].active::after {
@@ -215,7 +222,6 @@
   background-color: var(--primary-color);
   color: white;
 }
-
 
 .containerStockSizes input:nth-child(6)::placeholder,.containerStockSizes input:nth-child(10)::placeholder {
   color: rgba(255, 255, 255, 0.604);
