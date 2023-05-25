@@ -42,7 +42,7 @@ const Stock:React.FC = () => {
         header.classList.remove('alpha'); 
       }
     }
-  },[activeModalCreateProduct,activeModalEditProduct])
+  },[activeModalCreateProduct,activeModalEditProduct]);
 
   //here I check if the click is on the icon that is in span or in button, then I add an 'eventNone' class to avoid double clicks, and finally I check which modal should be activated
   function handleClick({ target }:SyntheticEvent) {

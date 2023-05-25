@@ -20,20 +20,6 @@
   margin-top: 20px;
 }
 
-.stock div button {
-  border-radius: 3px;
-  height: 29px;
-  width: 31px;
-  background: var(--primary-color);
-  color: var(--light-white);
-  border: 1px solid #dbdbdb61;
-  cursor: pointer;
-}
-
-.stock div button:focus {
-  background-color: var(--buttonClicked);
-}
-
 .stock div p {
   color: var(--light-white);
   padding-top: 6px;
@@ -93,12 +79,6 @@
   background-color: #ffffff1f;
 }
 
-.stockTable tbody tr td button span {
-  color: white;
-  font-size: 1.4rem;
-  transform: rotate(277deg);
-}
-
 .productImage {
   width: 50px;
 }
@@ -110,10 +90,28 @@
   top: 0;
   left: -7px;
   cursor: pointer;
+
+  color: white;
+  font-size: 1.4rem;
+  transform: rotate(277deg);
 }
 
-#createProduct:focus span {
+#editProduct:focus span {
+  color: #b7b7b7;
+}
 
+#createProduct {
+  border-radius: 3px;
+  height: 29px;
+  width: 31px;
+  background: var(--primary-color);
+  color: var(--light-white);
+  border: 1px solid #dbdbdb61;
+  cursor: pointer;
+}
+
+#createProduct:focus {
+  background-color: var(--buttonClicked);
 }
 
 .eventNone {
