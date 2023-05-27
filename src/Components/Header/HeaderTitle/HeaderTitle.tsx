@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { ITitle } from '../../Header';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../store/configureStore';
+import { setAnimeTitle } from '../../../store/title';
 import styles from './HeaderTitle.module.css';
 
-interface IHeaderTitleProps {
-  states: {
-    title: ITitle,
-  }
-};
+const HeaderTitle:React.FC = () => {
+  const dispatch = useDispatch();
+  const { animeTitle,titles } = useSelector((state: RootState) => state);
 
-const HeaderTitle:React.FC<IHeaderTitleProps> = ({states:{title}}) => {
-  const [animeTitle,setAnimeTitle] = useState<boolean>(false);
-
+  //I start with dispatch saying true, thus placing the class to make the animation, after the animation is over (500ms) I set it to false, so I can animate again when changing pages, alternating between true and false
   useEffect(() => {
-    setAnimeTitle(true);
+    dispatch(setAnimeTitle(true));
     setTimeout(() => {
-      setAnimeTitle(false);
+      dispatch(setAnimeTitle(false));
     }, 500);
-  },[title]);
+  },[dispatch,titles]);
 
   return (
     <section className={`${styles.titles} ${animeTitle ? styles.active : ''}`}>
-      <h1>{title.h1}</h1>
+      <h1>{titles.h1}</h1>
       <br/>
-      <h2>{title.h2}</h2>
+      <h2>{titles.h2}</h2>
     </section>
   );
 };

@@ -116,7 +116,7 @@ const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActi
   }
 
   return (
-    <form method='post' className={`${styles.modalProduct} ${activeModal ? styles.active : ''}`} onSubmit={handleSubmit} ref={modalRef} encType='multipart-data'>
+    <form method='post' className={`modal ${styles.modalProduct} ${activeModal ? styles.active : ''}`} onSubmit={handleSubmit} ref={modalRef} encType='multipart-data'>
       <button className={styles.exitModal} onClick={handleClickExitModal}><span className='material-symbols-outlined'>close</span></button>
       <div className={styles.containerImg}>
         <input type='file' id='img' accept='.jpg,.png' className={`${activeLoadFile ? styles.active : ''} ${buttonImgText === 'create' ? styles.create : styles.edit}`} onClick={handleClickFile} onBlur={() => setActiveLoadFile(false)} onChange={handleChangeFile} ref={inputFile}/>

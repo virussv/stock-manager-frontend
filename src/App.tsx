@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Datas from './Components/Datas/Datas';
 import Finances from './Components/Finances/Finances';
 import Header from './Components/Header';
 import Home from './Components/Home/Home';
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/estoque' element={<Stock/>}/>
         <Route path='/financas' element={<Finances/>}/>
+        <Route path='/dados/*' element={<Datas />}/>
       </Routes>
     </BrowserRouter>
   );

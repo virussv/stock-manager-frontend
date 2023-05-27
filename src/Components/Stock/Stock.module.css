@@ -20,12 +20,13 @@
   margin-top: 20px;
 }
 
-.stock div p {
+.stock div label {
   color: var(--light-white);
   padding-top: 6px;
   padding-left: 10px;
   font-family: var(--primary-font);
   font-weight: 600;
+  width: max-content;
 }
 
 .stock div button span {
@@ -116,4 +117,17 @@
 
 .eventNone {
   pointer-events: none;
+}
+
+.data {
+  text-decoration: none;
+  display: flex;
+  justify-content: end;
+}
+
+.data a{
+  font-weight: 600;
+  color: var(--light-white);
+  margin-top: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

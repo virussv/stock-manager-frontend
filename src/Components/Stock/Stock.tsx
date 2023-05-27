@@ -2,6 +2,9 @@ import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import styles from './Stock.module.css';
 import shirt from './../../Assets/images/shirt.png';
 import ModalProduct from './ModalProduct/ModalProduct';
+import { useDispatch } from 'react-redux';
+import { setTitles } from '../../store/title';
+import { Link } from 'react-router-dom';
 
 type TEnterModal = {
   modalCreateProduct: boolean,
@@ -9,6 +12,7 @@ type TEnterModal = {
 };
 
 const Stock:React.FC = () => {
+  const dispatch = useDispatch();
   //enterModal is to say that the animation of the modal will start
   const [enterModal,setEnterModal] = useState<TEnterModal>({
     modalCreateProduct: false,
@@ -24,6 +28,7 @@ const Stock:React.FC = () => {
 
   //here I check the state of the modal to enable or disable the buttons . I disable it so that when the modal opens screen readers do not read what is behind the modal and make it impossible to double click on the modal
   useEffect(() => {
+    dispatch(setTitles({h1: 'Meu',h2:'QuikEstoque'}));
     !activeModalCreateProduct && setTimeout(() => {
       setEnterModal((modal) => ({...modal,modalCreateProduct:false}));
     },500);
@@ -52,7 +57,7 @@ const Stock:React.FC = () => {
         header.classList.remove('alpha'); 
       }
     }
-  },[activeModalCreateProduct,activeModalEditProduct]);
+  },[dispatch,activeModalCreateProduct,activeModalEditProduct]);
 
   //here I check if the click is on the icon that is in span or in button, then I add an 'eventNone' class to avoid double clicks, and finally I check which modal should be activated
   function handleClick({ target }:SyntheticEvent) {
@@ -85,8 +90,11 @@ const Stock:React.FC = () => {
         <main className={styles.mainStockContent} ref={mainContent}>
         <section className={styles.stock}>
           <div>
-            <button onClick={handleClick} id={styles.createProduct} ref={buttonAddRef}><span className={`material-symbols-outlined`}>add</span></button>
-            <p>Adicionar Produto</p>
+            <div>
+              <button onClick={handleClick} id={styles.createProduct} ref={buttonAddRef}><span className={`material-symbols-outlined`}>add</span></button>
+              <label htmlFor={styles.createProduct}>Adicionar Produto</label>
+            </div>
+            <div className={styles.data}><Link to={'/dados/estoque'}>Dados</Link></div>
           </div>
           <table className={styles.stockTable}>
             <thead>
