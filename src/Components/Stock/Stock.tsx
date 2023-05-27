@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import styles from './Stock.module.css';
 import shirt from './../../Assets/images/shirt.png';
-import ModalProduct from './ModalProduct/CreateProduct';
+import ModalProduct from './ModalProduct/ModalProduct';
 
 type TEnterModal = {
   modalCreateProduct: boolean,
@@ -114,7 +114,7 @@ const Stock:React.FC = () => {
       
       {(enterModal.modalCreateProduct) && <ModalProduct states={{activeModal:activeModalCreateProduct,setActiveModal:setActiveModalCreateProduct}} buttonTexts={{buttonImgText:'create',buttonSendFormText:'Cadastrar Camiseta'}}/>}
 
-      {(enterModal.modalEditProduct) && <ModalProduct states={{activeModal:activeModalEditProduct,setActiveModal:setActiveModalEditProduct}} buttonTexts={{buttonImgText:'edit',buttonSendFormText:'Editar Camiseta'}}/>}
+      {(enterModal.modalEditProduct) && <ModalProduct states={{activeModal:activeModalEditProduct,setActiveModal:setActiveModalEditProduct}} buttonTexts={{buttonImgText:'edit',buttonSendFormText:'Editar Dados'}}/>}
 
     </React.Fragment>
   );

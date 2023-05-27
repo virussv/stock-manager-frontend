@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
-import styles from './CreateProduct.module.css';
+import styles from './ModalProduct.module.css';
 import camisa from '../../../Assets/images/shirt.png';
 
 interface ICreateProductProps {
@@ -23,11 +23,11 @@ type TSizeProps = [
   gg:string,
 ];
 
-type stockAmount = {
-  m: number,
-  p: number,
-  g: number,
-  gg: number,
+type TStock = {
+  m: { amount: number,sales: number, },
+  p: { amount: number,sales: number, },
+  g: { amount: number,sales: number, },
+  gg: { amount: number,sales: number, },
 };
 
 const arrayProductSizes:TSizeProps = ['m','p','g','gg'];
@@ -40,14 +40,13 @@ const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActi
   const [activeLoadFile,setActiveLoadFile] = useState<boolean>(false);
   //this is img display
   const [img,setImg] = useState<string | null>(null);
-  //this is stock count
-  const [stockAmount,setStockAmount] = useState<stockAmount>({
-    m: 0,
-    p: 0,
-    g: 0,
-    gg: 0,
+  //this is stock amount count
+  const [stock,setStock] = useState<TStock>({
+    m: { amount: 0,sales: 0, },
+    p: { amount: 0,sales: 0, },
+    g: { amount: 0,sales: 0, },
+    gg: { amount: 0,sales: 0, },
   });
-
 
   useEffect(() => {
     //here I check if the modal is active to add handleClickoutSIde,the timeout is to wait for the animation of the modal,
@@ -91,19 +90,33 @@ const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActi
     setActiveLoadFile(true);
   };
 
-  //first I check if the target.id of the element exists within my state to have a correct value and know which input will be changed, then I check if the length entered is greater than 4 in the input, if so, I delete the characters above the limit, finally I confirm if the possible id values ​​are the same as my state
+  //first I check if the target.id of the element exists within my state to have a correct value and know which input will be changed, then I check if the length entered is greater than 4 in the input, if so, I delete the characters above the limit, finally I confirm if the possible id values ​​are the same as my state and check which input is being triggered to change my 'amount' or 'sales'
   function handleChangeStock({ target }:SyntheticEvent) {
-    if(target instanceof HTMLInputElement && target.id in stockAmount) {
+    if(target instanceof HTMLInputElement && target.id in stock) {
       if(target.value.length > 4) {
         target.value = target.value.substring(0,4);
       };
       const id = target.id as 'm' | 'p' | 'g' | 'gg';
-      setStockAmount((stock) => ({...stock,[id]: Number(target.value)}));
+      if(target.className === styles.amount) {
+        setStock((stock) => ({...stock,[id]: { ...stock[id],amount: Number(target.value) }}));
+      }
+      if(target.className === styles.sales) {
+        setStock((stock) => ({...stock,[id]: { ...stock[id],sales: Number(target.value) }}));
+      }
     };
   };
 
+  function sumStock(sum: 'amount' | 'sales') {
+    const result = Object.values(stock).map((items) => {
+      return items[sum];
+    }).reduce((prevValue,currentValue) => {
+      return prevValue + currentValue;
+    });
+    return result;
+  }
+
   return (
-    <form method='post' className={`${styles.createProduct} ${activeModal ? styles.active : ''}`} onSubmit={handleSubmit} ref={modalRef} encType='multipart-data'>
+    <form method='post' className={`${styles.modalProduct} ${activeModal ? styles.active : ''}`} onSubmit={handleSubmit} ref={modalRef} encType='multipart-data'>
       <button className={styles.exitModal} onClick={handleClickExitModal}><span className='material-symbols-outlined'>close</span></button>
       <div className={styles.containerImg}>
         <input type='file' id='img' accept='.jpg,.png' className={`${activeLoadFile ? styles.active : ''} ${buttonImgText === 'create' ? styles.create : styles.edit}`} onClick={handleClickFile} onBlur={() => setActiveLoadFile(false)} onChange={handleChangeFile} ref={inputFile}/>
@@ -119,24 +132,25 @@ const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActi
         </div>
       </div>
 
-      <div className={styles.containerStockSizes}>
+      <div className={styles.productSize}>
           <p>Tamanhos</p>
           <p>Estoque</p>
+          <p>Vendas</p>
         {arrayProductSizes.map((size) => {
           return (
             <React.Fragment key={size}>
                 <label htmlFor={size}>{size.toUpperCase()}</label>
-                <input type='number' id={size} placeholder='0' onChange={handleChangeStock}/>
+                <input type='number' id={size} className={styles.amount} placeholder='0' onChange={handleChangeStock}/>
+                <input type='number' id={size} className={styles.sales} placeholder='0' onChange={handleChangeStock}/>
             </React.Fragment>
           );
         })}
-        <p className={styles.total}>Total:</p>
-        <p className={styles.totalStock}>{Object.values(stockAmount).reduce((prevValue,currentValue) => {
-          //sum the stock value
-          return prevValue + currentValue;
-        })}</p>
-        <p className={styles.marginTop}>Vendas:</p>
-        <input type='text' placeholder='0' className={styles.marginTop}/>
+      </div>
+      <div className={styles.datas}>
+        <p className={styles.total}>Estoque Total:</p>
+        <p className={styles.totalStock}>{sumStock('amount')}</p>
+        <p>Vendas Totais:</p>
+        <p>{sumStock('sales')}</p>
       </div>
       <button type='submit' className={styles.submit}>{buttonSendFormText}</button>
     </form>
