@@ -9,11 +9,11 @@
   background-color: var(--bg-color);
   border: 1px solid white;
   width: 300px;
-  height: 448px;
+  height: 500px;
   padding: 10px;
 
   display: grid;
-  grid-template-rows: 150px 200px 85px;
+  grid-template-rows: 150px 260px 70px;
   justify-content: center;
   align-items: center;
   font-family: var(--primary-font);
@@ -239,4 +239,27 @@
 .totalStock {
   overflow: hidden;
   overflow-x: scroll;
+}
+
+.marginTop {
+  margin-top: 25px !important;
+}
+
+.exitModal {
+  background-color: var(--primary-color);
+  position: absolute;
+  top: -17px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 100%;
+  left: -11px;
+  width: 35px;
+  height: 34px;
+}
+
+.exitModal span {
+  font-weight: 600;
+  padding-top: 4px;
+  padding-right: 1px;
+  cursor: pointer;
 }
