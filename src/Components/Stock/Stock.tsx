@@ -88,13 +88,13 @@ const Stock:React.FC = () => {
   return (
     <React.Fragment>
         <main className={styles.mainStockContent} ref={mainContent}>
-        <section className={styles.stock}>
+        <section className={`animeTop ${styles.stock}`}>
           <div>
             <div>
               <button onClick={handleClick} id={styles.createProduct} ref={buttonAddRef}><span className={`material-symbols-outlined`}>add</span></button>
               <label htmlFor={styles.createProduct}>Adicionar Produto</label>
             </div>
-            <div className={styles.data}><Link to={'/dados/estoque'}>Dados</Link></div>
+            <div className={styles.data}><Link to={'/estatisticas/estoque'}>Estatísticas</Link></div>
           </div>
           <table className={styles.stockTable}>
             <thead>
