@@ -1,3 +1,6 @@
+# About Project
+I'm creating a stock/finance manager for my mother, with react and in the backend I intend to use node
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
