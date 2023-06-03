@@ -26,9 +26,12 @@ const Stock:React.FC = () => {
   const buttonAddRef = useRef<HTMLButtonElement | null>(null);
   const buttonEditRef = useRef<HTMLButtonElement | null>(null);
 
-  //here I check the state of the modal to enable or disable the buttons . I disable it so that when the modal opens screen readers do not read what is behind the modal and make it impossible to double click on the modal
   useEffect(() => {
     dispatch(setTitles({h1: 'Meu',h2:'QuikEstoque'}));
+  },[dispatch]);
+
+  //here I check the state of the modal to enable or disable the buttons . I disable it so that when the modal opens screen readers do not read what is behind the modal and make it impossible to double click on the modal
+  useEffect(() => {    
     !activeModalCreateProduct && setTimeout(() => {
       setEnterModal((modal) => ({...modal,modalCreateProduct:false}));
     },500);
@@ -57,7 +60,7 @@ const Stock:React.FC = () => {
         header.classList.remove('alpha'); 
       }
     }
-  },[dispatch,activeModalCreateProduct,activeModalEditProduct]);
+  },[activeModalCreateProduct,activeModalEditProduct]);
 
   //here I check if the click is on the icon that is in span or in button, then I add an 'eventNone' class to avoid double clicks, and finally I check which modal should be activated
   function handleClick({ target }:SyntheticEvent) {
@@ -87,8 +90,8 @@ const Stock:React.FC = () => {
 
   return (
     <React.Fragment>
-        <main className={styles.mainStockContent} ref={mainContent}>
-        <section className={`animeTop ${styles.stock}`}>
+        <main className={`animeTop`} ref={mainContent}>
+        <section className={`${styles.stock}`}>
           <div>
             <div>
               <button onClick={handleClick} id={styles.createProduct} ref={buttonAddRef}><span className={`material-symbols-outlined`}>add</span></button>

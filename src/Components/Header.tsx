@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Header.module.css';
 import Menu from './Header/Menu/Menu';
 import HeaderTitle from './Header/HeaderTitle/HeaderTitle';
 
 const Header:React.FC = () => {
   const [activeMenu,setActiveMenu] = useState<boolean>(false);
-
-  useEffect(() => {
-
-  },[]);
 
   return (
     <header className={styles.header}>

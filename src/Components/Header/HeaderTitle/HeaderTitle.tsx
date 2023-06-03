@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/configureStore';
+import { setAnimeTitle } from '../../../store/title';
 import styles from './HeaderTitle.module.css';
 
 const HeaderTitle:React.FC = () => {
-  const [activeAnimeTitle,setActiveAnimeTitle] = useState<boolean>(false);
-  const { titles } = useSelector((state: RootState) => state);
+  const dispatch = useDispatch();
+  const { animeTitle,titles } = useSelector((state: RootState) => state);
 
-  //first I check if there is something in h1 or h2, to activate my state to true, then I wait 500ms (title animation time) to change it to false, because when the title changes again I will set the state to true again, that is, the class to make the animation will be placed again in my section. It is necessary to validate if there is something in h1 or h2 for it not to activate the setTimeout twice, which would be the moment when the state starts and then when the state changes. It is necessary to activate it when changing the state, that is, the title.
+  //first I check if there is something in h1 or h2, because if there is not something, it is in the initial state and it is not necessary to execute what comes below, right after I start with dispatch saying true, thus placing the class to make the animation, after the animation is over (500ms) I set it to false, so I can animate again when changing pages, alternating between true and false
   useEffect(() => {
-    if(titles.h1 || titles.h2) {
-      setActiveAnimeTitle(true);
+    if(titles.h1 && titles.h2) {
+      dispatch(setAnimeTitle(true));
       setTimeout(() => {
-        setActiveAnimeTitle(false);
+        dispatch(setAnimeTitle(false));
       }, 500);
     }
-  },[titles]);
+  },[dispatch,titles]);
 
   return (
-    <section className={`${styles.titles} ${activeAnimeTitle ? styles.active : ''}`}>
+    <section className={`${styles.titles} ${animeTitle ? styles.active : ''}`}>
       <h1>{titles.h1}</h1>
       <br/>
       <h2>{titles.h2}</h2>

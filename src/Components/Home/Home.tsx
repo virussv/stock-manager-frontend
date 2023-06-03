@@ -12,7 +12,7 @@ const Home:React.FC = () => {
   },[dispatch]);
 
   return (
-    <main>
+    <main className='animeTop'>
       <Balance balance={1000}/>
       <GeralContent/>
     </main>
