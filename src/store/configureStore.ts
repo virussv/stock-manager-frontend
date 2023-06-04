@@ -1,8 +1,10 @@
-import { Action,configureStore, ThunkAction } from "@reduxjs/toolkit";
-import slice from './title';
+import { Action,combineReducers,configureStore, ThunkAction } from "@reduxjs/toolkit";
+import sliceTitle from './title';
+import sliceGraph from './graph';
 
+const reducer = combineReducers({sliceTitle,sliceGraph});
 const store = configureStore({
-  reducer: slice,
+  reducer: reducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 

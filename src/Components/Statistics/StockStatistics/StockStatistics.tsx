@@ -1,43 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTitles } from '../../../store/title';
-import { VictoryBar, VictoryChart } from 'victory';
+import Load from './Graphs/Load/LoadingGraph';
 import styles from './StockStatistics.module.css';
+const Graphs = React.lazy(() => import('./Graphs/Graphs'));
 
-const StockStatistic = () => {
+type TValueStats = 'week' | 'days' | 'month' | 'weekDays';
+type TValueGraphs = 'pizza' | 'bar';
+
+const StockStatistic:React.FC = () => {
   const dispatch = useDispatch();
+  //filter statistics
+  const [valueStats,setValueStats] = useState<TValueStats>('week');
+  //choice a graph
+  const [valueGraphs,setValueGraphs] = useState<TValueGraphs>('pizza');
 
   useEffect(() => {
     dispatch(setTitles({h1:'Meus',h2:'QuikDados'}));
   },[dispatch]);
 
-  function ob() {
-    let a:{}[] = [];
-    for (let i = 0; i < 10; i++) {
-      a.push({
-        y: `semana${i}`,
-        x: `${i}`
-      });
-    }
-  return a;
-  }
-
   return (
-    <section className='animeTop'>
+    <section className={`animeTop ${styles.container}`}>
       <div className={styles.filters}>
-        <select name="" id="">
+        <select name='stats' onChange={({ target }) => setValueStats(target.value as TValueStats)}>
           <option value='week'>Por semana</option>
           <option value='days'>Por dias</option>
           <option value='month'>Por mês</option>
           <option value='weekdays'>Por dias da semana</option>
         </select>
+
+        <select name='graphs' onChange={({ target }) => setValueGraphs(target.value as TValueGraphs)}>
+          <option value='pizza'>Pizza</option>
+          <option value='bar'>Barra</option>
+        </select>
       </div>
 
-      <div className={styles.graphs}>
-        <VictoryChart>
-          <VictoryBar data={ob()}></VictoryBar>
-        </VictoryChart>
-      </div>
+      <React.Suspense fallback={<Load />}>
+        <Graphs graph={valueGraphs}/>
+      </React.Suspense>
     </section>
   );
 };

@@ -1,6 +1,8 @@
+
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import styles from './ModalProduct.module.css';
 import camisa from '../../../Assets/images/shirt.png';
+import Loading from '../../../Helper/Load/Load';
 
 interface ICreateProductProps {
   states: {
@@ -34,7 +36,6 @@ const arrayProductSizes:TSizeProps = ['m','p','g','gg'];
 
 const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActiveModal},buttonTexts:{buttonImgText,buttonSendFormText}}) => {
   const modalRef = useRef<HTMLFormElement | null>(null);
-  const loadingFile = useRef<HTMLDivElement | null>(null);
   const inputFile = useRef<HTMLInputElement | null>(null);
   //this is loadFile statement
   const [activeLoadFile,setActiveLoadFile] = useState<boolean>(false);
@@ -125,11 +126,7 @@ const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActi
           <img src={img ? img : camisa} alt='pre-visualização da camiseta' onLoad={() => setActiveLoadFile(false)}/>
         </div>
 
-        <div className={`${styles.loading} ${activeLoadFile ? styles.active : ''}`} ref={loadingFile}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        {activeLoadFile && <Loading stylesContainer={{position:'absolute',top:'14px',left:'6px'}} styles={{height:6,width:6,color:'white'}}/>}
       </div>
 
       <div className={styles.productSize}>

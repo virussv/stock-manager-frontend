@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //a simple slice to change header title dynamically
-const slice = createSlice({
+const sliceTitle = createSlice({
   name: 'title',
   initialState:{
     animeTitle: false,
@@ -20,5 +20,5 @@ const slice = createSlice({
   },
 });
 
-export const { setTitles,setAnimeTitle } = slice.actions;
-export default slice.reducer;
+export const { setTitles,setAnimeTitle } = sliceTitle.actions;
+export default sliceTitle.reducer;

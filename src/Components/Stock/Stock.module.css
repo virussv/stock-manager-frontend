@@ -109,11 +109,11 @@
   text-decoration: none;
   display: flex;
   justify-content: end;
+  align-items: center;
 }
 
 .data a{
   font-weight: 600;
   color: var(--light-white);
-  margin-top: 8px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
