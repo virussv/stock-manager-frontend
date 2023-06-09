@@ -1,3 +1,10 @@
 .graphContainer {
-  height: 365px;
+  display: grid;
+  grid-template-columns: 300px;
+  justify-content: center;
+}
+
+.graph {
+  width: 300px;
+  margin: 30px 0px 0px 0px;
 }

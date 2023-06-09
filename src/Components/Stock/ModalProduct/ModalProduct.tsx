@@ -123,10 +123,10 @@ const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActi
         <input type='file' id='img' accept='.jpg,.png' className={`${activeLoadFile ? styles.active : ''} ${buttonImgText === 'create' ? styles.create : styles.edit}`} onClick={handleClickFile} onBlur={() => setActiveLoadFile(false)} onChange={handleChangeFile} ref={inputFile}/>
         <p>Sua imagem ficara assim:</p>
         <div className={styles.productPreview}>
-          <img src={img ? img : camisa} alt='pre-visualização da camiseta' onLoad={() => setActiveLoadFile(false)}/>
+          <img src={img ? img : camisa} alt='pré-visualização da camiseta' onLoad={() => setActiveLoadFile(false)}/>
         </div>
 
-        {activeLoadFile && <Loading stylesContainer={{position:'absolute',top:'14px',left:'6px'}} styles={{height:6,width:6,color:'white'}}/>}
+        {activeLoadFile && <Loading stylesContainer={{position:'absolute',top:'14px',left:'6px'}} styles={{height:6,width:6,backgroundColor:'white'}}/>}
       </div>
 
       <div className={styles.productSize}>

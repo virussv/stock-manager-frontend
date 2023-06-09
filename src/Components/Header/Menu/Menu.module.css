@@ -8,8 +8,9 @@
   position: fixed;
   right: 0px;
   border-radius: 10px 0px 10px 10px;
-  background-color: #000011a8;
+  background-color: #000011;
   box-shadow: 2px -4px 10px 4px #380e8f;
+  z-index: 998;
 }
 
 .nav.active {

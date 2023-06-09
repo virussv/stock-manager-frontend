@@ -1,3 +1,9 @@
+.containerOptions {
+  width: 300px;
+  margin: auto;
+}
+
+
 .filters {
   display: flex;
   justify-content: space-between;
@@ -17,12 +23,4 @@
 
 .filters select:focus {
   outline: 1px solid white;
-}
-
-.container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 300px;
-  grid-template-rows: 30px 300px;
-  justify-content: center;
 }
