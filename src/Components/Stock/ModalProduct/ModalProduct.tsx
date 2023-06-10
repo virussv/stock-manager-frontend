@@ -10,8 +10,8 @@ interface ICreateProductProps {
     setActiveModal: React.Dispatch<React.SetStateAction<boolean>>,
   },
 
-  //this is for edit or create Product
-  buttonTexts: {
+    //this is for edit or create Product
+    buttonTexts: {
     //i need change input message on css because the type input File is so bad for style,so i create other button with ::after on css,i change the message with "content:'something'"
     buttonImgText: 'create' | 'edit',
     buttonSendFormText: string,

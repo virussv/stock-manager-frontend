@@ -1,0 +1,105 @@
+.finances {
+  margin: auto;
+  color: white;
+  width: 285px;
+}
+
+.transactions {
+  background-color: #ffffff0f;
+  width: 100%;
+  height: 90px;
+  margin-top: 10px;
+}
+
+.headerComponent {
+  display: flex;
+  width: 285px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.headerComponent div {
+  display: flex;
+  width: 285px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.headerComponent .payments {
+  text-decoration: none;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.headerComponent .payments a{
+  font-weight: 600;
+  color: var(--light-white);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.transactions {
+  padding: 6px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+}
+
+.transactions .money {
+  font-size: .9rem;
+}
+
+.transactions p {
+  text-align: start;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.transaction .money::before {
+  display: inline-block;
+  border-radius: 100%;
+  font-size: .7rem;
+  width: 13px;
+  height: 13px;
+  text-align: center;
+  margin-right: 6px;
+  position: relative;
+  bottom: 1px;
+}
+
+.transaction .money.received::before {
+  content: '+';
+  background-color: #64b64b;
+}
+
+.transaction .money.spent::before {
+  content: '-';
+  background-color: #ff3a3a;
+}
+
+
+
+.transaction .personName {
+  position: relative;
+  bottom: 8px;
+  left: 21px;
+  font-size: .7rem;
+  color: #ffffff85;
+  padding: 0px;
+  margin: 0px;
+}
+
+.date .day,.hour{
+  font-size: .9rem;
+  color: #ffffff85;
+  padding: 0;
+  margin: 4px;
+}
+
+.date .hour {
+  font-size: .7rem;
+}

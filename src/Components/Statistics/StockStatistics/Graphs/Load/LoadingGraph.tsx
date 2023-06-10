@@ -6,7 +6,7 @@ const Load = () => {
   return (
     <div className={styles.load}>
       <p>Carregando</p>
-      <Loading stylesContainer={{marginTop:9}} styles={{height: 18,width: 18}}/>
+      <Loading stylesContainer={{marginTop:9}} styles={{height: 14,width: 14}}/>
     </div>
   )
 }

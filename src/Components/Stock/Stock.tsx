@@ -5,6 +5,7 @@ import ModalProduct from './ModalProduct/ModalProduct';
 import { useDispatch } from 'react-redux';
 import { setTitles } from '../../store/title';
 import { Link } from 'react-router-dom';
+import ButtonAdd from '../../Helper/ButtonAdd/ButtonAdd';
 
 type TEnterModal = {
   modalCreateProduct: boolean,
@@ -94,8 +95,7 @@ const Stock:React.FC = () => {
         <section className={`${styles.stock}`}>
           <div>
             <div>
-              <button onClick={handleClick} id={styles.createProduct} ref={buttonAddRef}><span className={`material-symbols-outlined`}>add</span></button>
-              <label htmlFor={styles.createProduct}>Adicionar Produto</label>
+              <ButtonAdd onClick={handleClick} id={styles.createProduct} refButton={buttonAddRef} htmlFor={styles.createProduct} label={'Adicionar Produto'} />
             </div>
             <div className={styles.data}><Link to={'/estatisticas/estoque'}>Estatísticas</Link></div>
           </div>
