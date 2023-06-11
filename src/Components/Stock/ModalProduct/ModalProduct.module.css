@@ -226,22 +226,3 @@
   margin: auto;
 }
 /*for big numbers*/
-
-.exitModal {
-  background-color: var(--primary-color);
-  position: absolute;
-  top: -17px;
-  color: white;
-  border: 1px solid white;
-  border-radius: 100%;
-  left: -11px;
-  width: 35px;
-  height: 34px;
-}
-
-.exitModal span {
-  font-weight: 600;
-  padding-top: 4px;
-  padding-right: 1px;
-  cursor: pointer;
-}

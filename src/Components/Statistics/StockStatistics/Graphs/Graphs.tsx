@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 interface IGraphs {
   graph: 'pizza' | 'bar'
-};
+}
 
 type TStyleAxisGraph = PropTypes.InferProps<{
   parent: PropTypes.Requireable<object>;
@@ -20,38 +20,38 @@ type TStyleAxisGraph = PropTypes.InferProps<{
 }>;
 
 const Graphs:React.FC<IGraphs> = ({ graph }) => {
-  const dispatch = useDispatch();
-  //animeGraph slice
-  const { sliceGraph } = useSelector((state:RootState) => state);
-  const { animeGraph } = sliceGraph;
-  //graph line style
-  const styleAxis:TStyleAxisGraph = { tickLabels: { fill: 'white',fontSize: 32,fontWeight:600 },axis:{ stroke: '#6100c6',strokeWidth:2 } };
+	const dispatch = useDispatch();
+	//animeGraph slice
+	const { sliceGraph } = useSelector((state:RootState) => state);
+	const { animeGraph } = sliceGraph;
+	//graph line style
+	const styleAxis:TStyleAxisGraph = { tickLabels: { fill: 'white',fontSize: 32,fontWeight:600 },axis:{ stroke: '#6100c6',strokeWidth:2 } };
 
-  //I say true for the animation, I wait 500ms (time it ends) and then I change it to false. Every time I change the selected graphic, it will animate
-  useEffect(() => {
-    dispatch(setAnimeGraph(true));
-    setTimeout(() => {
-      dispatch(setAnimeGraph(false));
-    }, 500);
-  },[dispatch,graph]);
+	//I say true for the animation, I wait 500ms (time it ends) and then I change it to false. Every time I change the selected graphic, it will animate
+	useEffect(() => {
+		dispatch(setAnimeGraph(true));
+		setTimeout(() => {
+			dispatch(setAnimeGraph(false));
+		}, 500);
+	},[dispatch,graph]);
 
-  return (
-    <section className={styles.graphContainer}>
-      <div className={`${styles.graph} ${animeGraph ? 'animeTop' : ''}`}>
-     {graph === 'bar' 
-     ? 
-        <VictoryChart width={1300} height={1300}>
-          <VictoryAxis dependentAxis={true} style={styleAxis}/>
-          <VictoryAxis style={styleAxis}/>
+	return (
+		<section className={styles.graphContainer}>
+			<div className={`${styles.graph} ${animeGraph ? 'animeTop' : ''}`}>
+				{graph === 'bar' 
+					? 
+					<VictoryChart width={1300} height={1300}>
+						<VictoryAxis dependentAxis={true} style={styleAxis}/>
+						<VictoryAxis style={styleAxis}/>
 
-          <VictoryBar sortOrder='descending' style={ { data:{ fill: 'white',width: 6} } }/>
-        </VictoryChart> 
-      :
-        <VictoryPie  style={{labels:{fill:'white'}}}/>
-      }
-   </div>
-    </section>
-  )
-}
+						<VictoryBar sortOrder='descending' style={ { data:{ fill: 'white',width: 6} } }/>
+					</VictoryChart> 
+					:
+					<VictoryPie  style={{labels:{fill:'white'}}}/>
+				}
+			</div>
+		</section>
+	);
+};
 
 export default Graphs;

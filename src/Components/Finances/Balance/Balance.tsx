@@ -6,11 +6,11 @@ interface IBalance{
 }
 
 const Balance:React.FC<IBalance> = ({balance}) => {
-  return (
-    <section className={styles.balance}>
-      <h1>Saldo: <a href='#'><span>R$ {balance}</span></a></h1>
-    </section>
-  );
+	return (
+		<section className={styles.balance}>
+			<h1>Saldo: <a href='#'><span>R$ {balance}</span></a></h1>
+		</section>
+	);
 };
 
 export default Balance;

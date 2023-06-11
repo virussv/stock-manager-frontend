@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState } from 'react';
 import styles from './Header.module.css';
 import Menu from './Header/Menu/Menu';
@@ -11,7 +12,7 @@ const Header:React.FC = () => {
       <HeaderTitle />
       <Menu states={{activeMenu,setActiveMenu}}/>
     </header>
-  )
-}
+  );
+};
 
 export default Header;

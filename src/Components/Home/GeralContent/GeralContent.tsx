@@ -1,11 +1,10 @@
-import React from 'react'
-import shirt from './../../../Assets/images/shirt.png';
+import React from 'react';
 import styles from './GeralContent.module.css';
 
 const GeralContent:React.FC = () => {
-  return (
-    <section className={styles.geralContent}>Home</section>
-  )
-}
+	return (
+		<section className={styles.geralContent}>Home</section>
+	);
+};
 
 export default GeralContent;
