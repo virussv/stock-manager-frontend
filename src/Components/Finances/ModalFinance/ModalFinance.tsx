@@ -24,6 +24,16 @@ const ModalFinance:React.FC<IModalFinanceProps> = ({states:{activeModal,setActiv
 	return (
 		<form onSubmit={handleSubmit} className={`modal ${styles.modalFinance} ${activeModal ? styles.active : ''}`} ref={modalRef}>ModalFinance
 			<ExitModal setActiveModal={setActiveModal}/>
+			<div>
+				<label htmlFor='paid'>Pago</label>
+				<input type='checkbox' id='paid' value='paid'/>
+				<label htmlFor='received'>Recebido</label>
+				<input type='checkbox' id='received'/>
+			</div>
+			<div>
+				<label htmlFor='name'>{'Nome(lugar/pessoa)'}</label>
+				<input type='text' id='name'/>
+			</div>
 		</form>
 	);
 };

@@ -7,18 +7,17 @@ import Home from './Components/Home/Home';
 import Stock from './Components/Stock/Stock';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Header/>
-
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/estoque' element={<Stock/>}/>
-        <Route path='/financas' element={<Finances/>}/>
-        <Route path='/estatisticas/*' element={<Datas />}/>
-      </Routes>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<Header/>
+			<Routes>
+				<Route path='/' element={<Home/>}/>
+				<Route path='/estoque' element={<Stock/>}/>
+				<Route path='/financas' element={<Finances/>}/>
+				<Route path='/estatisticas/*' element={<Datas />}/>
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;

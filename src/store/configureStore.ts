@@ -1,11 +1,11 @@
-import { Action,combineReducers,configureStore, ThunkAction } from "@reduxjs/toolkit";
+import { Action,combineReducers,configureStore, ThunkAction } from '@reduxjs/toolkit';
 import sliceTitle from './title';
 import sliceGraph from './graph';
 
 const reducer = combineReducers({sliceTitle,sliceGraph});
 const store = configureStore({
-  reducer: reducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+	reducer: reducer,
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

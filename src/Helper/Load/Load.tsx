@@ -7,13 +7,13 @@ interface ILoadingProps {
 }
 
 const Load:React.FC<ILoadingProps> = ({ styles,stylesContainer }) => {
-  return (
-    <div className={`${style.loading}`} style={stylesContainer}>
-      {[1,2,3].map((num) => {
-        return <span key={num} style={styles}></span>
-      })}
-    </div>
-  )
-}
+	return (
+		<div className={`${style.loading}`} style={stylesContainer}>
+			{[1,2,3].map((num) => {
+				return <span key={num} style={styles}></span>;
+			})}
+		</div>
+	);
+};
 
 export default Load;

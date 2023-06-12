@@ -36,8 +36,6 @@ body {
   transform: translate3d(-50%, -45%,0px);
   background-color: var(--bg-color);
   border: 1px solid white;
-  width: 300px;
-  height: 510px;
   padding: 10px;
 }
 

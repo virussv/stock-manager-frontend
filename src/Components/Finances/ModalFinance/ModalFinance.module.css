@@ -1,14 +1,15 @@
 .modalFinance {
+  height: 300px;
   display: grid;
-  grid-template-rows: 150px 205px 73px 60px;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--primary-font);
-  font-weight: 600;
+  grid-template-rows: repeat(3,50px);
 }
 
 .modalFinance.active {
   visibility: visible;
   opacity: 1;
   transform: translate3d(-50%, -50%,0px);
+}
+
+.modalFinance {
+  color: white;
 }
