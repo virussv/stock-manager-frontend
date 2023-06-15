@@ -38,7 +38,7 @@ const Stock:React.FC = () => {
 				<section className={`${styles.stock}`}>
 					<div>
 						<div>
-							<ButtonAdd onClick={({ target }:SyntheticEvent) => handleClickModal(target,setEnterModalCreateProduct,setActiveModalCreateProduct)} id={styles.createProduct} refButton={buttonAddRef} htmlFor={styles.createProduct} label={'Adicionar Produto'} />
+							<ButtonAdd onClick={({ target }:SyntheticEvent) => handleClickModal(target,setEnterModalCreateProduct,setActiveModalCreateProduct)} id={styles.createProduct} refButton={buttonAddRef} label={'Adicionar Produto'} />
 						</div>
 						<div className={styles.data}><Link to={'/estatisticas/estoque'}>Estatísticas</Link></div>
 					</div>

@@ -4,6 +4,7 @@ import camisa from '../../../Assets/images/shirt.png';
 import Loading from '../../../Helper/Load/Load';
 import handleOutSideClick from '../../../Helper/Modal/handleOutSideClick';
 import ExitModal from '../../../Helper/Modal/ExitModal';
+import ButtonSubmit from '../../../Helper/ButtonSubmit/ButtonSubmit';
 
 interface ICreateProductProps {
   states: {
@@ -131,7 +132,7 @@ const ModalProduct:React.FC<ICreateProductProps> = ({states:{activeModal,setActi
 				<p>Vendas Totais:</p>
 				<p>{sumStock('sales')}</p>
 			</div>
-			<button type='submit' className={styles.submit}>{buttonSendFormText}</button>
+			<ButtonSubmit content={buttonSendFormText} id={styles.submit}/>
 		</form>
 	);
 };

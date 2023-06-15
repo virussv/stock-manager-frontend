@@ -1,0 +1,104 @@
+.modalFinance {
+  height: 255px;
+  width: 300px;
+  display: grid;
+  grid-template-rows: 100px 55px 45px;
+  justify-content: center;
+  align-content: center;
+}
+
+.modalFinance.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(-50%, -50%,0px);
+}
+
+.nameInputContainer {
+  width: 180px;
+}
+ 
+.nameInputContainer input {
+  background-color: var(--primary-color);
+  border: 1px solid #dbdbdb61;
+  padding: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: .8rem;
+ }
+
+.nameInputContainer .value {
+  margin-bottom: 16px;
+}
+ 
+.nameInputContainer label{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: .8rem;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+ }
+
+.checkBoxContainer label {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: .8rem;
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkBoxContainer {
+  margin-top: 14px;
+  justify-self: center;
+}
+
+.checkBoxContainer label input {
+  margin: 5px;
+  position: relative;
+  top: 2px;
+}
+
+.checkBoxContainer label input::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 15px;
+  height: 14px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+  transform: translateX(-1px);
+  cursor: pointer;
+}
+
+.checkBoxContainer label span {
+  display: none;
+  transform: rotate(45deg);
+  height: 10px;
+  width: 6px;
+  border-bottom: 2px solid #78b13f;
+  border-right: 2px solid #78b13f;
+  position: absolute;
+  top: 1px;
+  right: 8px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.checkBoxContainer label input:checked + span {
+  display: block;
+}
+
+.send {
+  margin-top: 5px;
+  height: 30px;
+}
+
+#submit {
+  height: 28px;
+  justify-self: center;
+  margin-top: 10px;
+}
