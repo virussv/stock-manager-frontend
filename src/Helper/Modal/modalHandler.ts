@@ -32,4 +32,4 @@ function modalHandler(
 	}
 }
 
-export default modalHandler;
+export default modalHandler; 

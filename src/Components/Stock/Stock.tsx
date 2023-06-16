@@ -5,7 +5,7 @@ import ModalProduct from './ModalProduct/ModalProduct';
 import { useDispatch } from 'react-redux';
 import { setTitles } from '../../store/title';
 import { Link } from 'react-router-dom';
-import ButtonAdd from '../../Helper/ButtonAdd/ButtonAdd';
+import ButtonAdd from '../../Helper/Modal/ButtonAdd/ButtonAdd';
 import modalHandler from '../../Helper/Modal/modalHandler';
 import handleClickModal from '../../Helper/Modal/handleClick';
 

@@ -1,12 +1,12 @@
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ButtonAdd from '../../../Helper/ButtonAdd/ButtonAdd';
+import ButtonAdd from '../../../Helper/Modal/ButtonAdd/ButtonAdd';
 import handleClickModal from '../../../Helper/Modal/handleClick';
 import modalHandler from '../../../Helper/Modal/modalHandler';
 import { setTitles } from '../../../store/title';
+import ModalTransaction from './ModalTransactions/ModalTransactions';
 import styles from './Transactions.module.css';
-import ModalFinance from './Transactions.module.css';
 
 const Transactions:React.FC = () => {
 	const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const Transactions:React.FC = () => {
 				</section>
 			</main>
 
-			{ enterModal && <ModalFinance states={{ activeModal,setActiveModal }}/> }
+			{ enterModal && <ModalTransaction states={{ activeModal,setActiveModal }}/> }
 		</React.Fragment>
 	);
 };

@@ -21,7 +21,7 @@ body {
 }
 
 .alpha {
-  transition: .5s;
+  transition: .5s !important;
   opacity: .1 !important;
   pointer-events: none;
 }

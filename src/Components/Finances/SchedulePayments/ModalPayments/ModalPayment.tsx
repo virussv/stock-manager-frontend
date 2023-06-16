@@ -4,16 +4,17 @@ import ExitModal from '../../../../Helper/Modal/ExitModal';
 import handleOutSideClick from '../../../../Helper/Modal/handleOutSideClick';
 import handleCheckBox from '../../helper/handleCheckBox';
 import { TCheckBoxProps } from '../../helper/TCheckbox';
-import styles from './ModalTransactions.module.css';
+import styles from './ModalPayment.module.css';
 
-interface IModalTransactionProps {
+interface IModalScheduleProps {
   states: {
     activeModal: boolean,
     setActiveModal: React.Dispatch<React.SetStateAction<boolean>>,
   },
 }
 
-const ModalTransaction:React.FC<IModalTransactionProps> = ({states:{activeModal,setActiveModal}}) => {
+
+const ModalPayments:React.FC<IModalScheduleProps> = ({ states:{ activeModal,setActiveModal } }) => {
 	const [checkbox,setCheckBox] = useState<TCheckBoxProps | null>(null); 
 	const modalRef = useRef<HTMLFormElement | null>(null);
 
@@ -23,32 +24,38 @@ const ModalTransaction:React.FC<IModalTransactionProps> = ({states:{activeModal,
 
 	function handleSubmit(event:SyntheticEvent) {
 		event.preventDefault();
-	}
+	}   
 
 	return (
-		<form onSubmit={handleSubmit} className={`modal ${styles.modalFinance} ${activeModal ? styles.active : ''}`} ref={modalRef}>
+		<form onSubmit={handleSubmit} className={`modal ${styles.modalPayment} ${activeModal ? styles.active : ''}`} ref={modalRef}>
 			<ExitModal setActiveModal={setActiveModal}/>
-			<div className={styles.nameInputContainer}>
-				<label htmlFor='value'>Valor</label>
-				<input type='number' id='value' className={styles.value}/>
-				<label htmlFor='name'>{'Nome(lugar/pessoa)'}</label>
+
+			<div className={styles.schedulePaymentContainer}>
+				<label htmlFor='name'>{'Nome pessoa/lugar'}</label>
 				<input type='text' id='name'/>
+				<label htmlFor='value'>Valor</label>
+				<input type='number' id='number'/>
+				<label htmlFor='date'>date</label>
+				<input type='date' />
 			</div>
+
 			<div className={styles.checkBoxContainer}>
 				<label htmlFor='paid'>
-          Pago
-					<input type='checkbox' id='paid' value='paid' checked={checkbox === 'paid'} onChange={({ target }:SyntheticEvent) => {handleCheckBox(target,setCheckBox);}}/>
+          Á pagar
+					<input type='checkbox' id='paid' checked={checkbox === 'paid'} onChange={({ target }:SyntheticEvent) => handleCheckBox(target,setCheckBox)}/>
 					<span></span>
 				</label>
 				<label htmlFor='received'>
-          Recebido
-					<input type='checkbox' id='received' value='received' checked={checkbox === 'received'} onChange={({ target }:SyntheticEvent) => {handleCheckBox(target,setCheckBox);}}/>
+          Á receber
+					<input type='checkbox' id='received' checked={checkbox === 'paid'} onChange={({ target }:SyntheticEvent) => handleCheckBox(target,setCheckBox)}/>
 					<span></span>
 				</label>
 			</div>
-			<ButtonSubmit content='Enviar Transação' id={styles.submit}/>
+
+
+			<ButtonSubmit content='Agendar Pagamento' id={styles.submit}/>
 		</form>
 	);
 };
 
-export default ModalTransaction;
+export default ModalPayments;

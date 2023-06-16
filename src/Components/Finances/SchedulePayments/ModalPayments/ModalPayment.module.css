@@ -1,46 +1,57 @@
-.modalFinance {
-  height: 255px;
+.modalPayment {
+  height: 350px;
   width: 300px;
   display: grid;
-  grid-template-rows: 100px 55px 45px;
+  grid-template-rows: 150px 90px 30px;
   justify-content: center;
   align-content: center;
+
 }
 
-.modalFinance.active {
+.modalPayment.active {
   visibility: visible;
   opacity: 1;
   transform: translate3d(-50%, -50%,0px);
 }
 
-.nameInputContainer {
+.schedulePaymentContainer {
   width: 180px;
 }
- 
-.nameInputContainer input {
-  background-color: var(--primary-color);
-  border: 1px solid #dbdbdb61;
-  padding: 3px;
-  border-radius: 3px;
-  outline: none;
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 600;
-  font-size: .8rem;
- }
 
-.nameInputContainer .value {
-  margin-bottom: 16px;
-}
- 
-.nameInputContainer label{
+.schedulePaymentContainer label {
+  color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
-  font-size: .8rem;
+  font-size: .9rem;
+}
+
+.schedulePaymentContainer input {
+  width: 100%;
+  padding: 3px;
+  outline: none;
+  border: none;
+  background-color: var(--primary-color);
+  margin-bottom: 16px;
   color: white;
-  cursor: pointer;
-  margin-top: 10px;
- }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: .9rem;
+  border-radius: 3px;
+}
+
+.checkBoxContainer {
+  align-self: center;
+  justify-self: center;
+}
+
+.checkboxContainer label {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: .9rem;
+  border-radius: 3px;
+}
+
 
 .checkBoxContainer label {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -49,11 +60,6 @@
   color: white;
   position: relative;
   cursor: pointer;
-}
-
-.checkBoxContainer {
-  margin-top: 14px;
-  justify-self: center;
 }
 
 .checkBoxContainer label input {
@@ -93,7 +99,5 @@
 }
 
 #submit {
-  height: 28px;
   justify-self: center;
-  margin-top: 10px;
 }
