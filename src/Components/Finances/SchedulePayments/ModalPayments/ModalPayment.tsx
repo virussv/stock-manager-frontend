@@ -42,12 +42,12 @@ const ModalPayments:React.FC<IModalScheduleProps> = ({ states:{ activeModal,setA
 			<div className={styles.checkBoxContainer}>
 				<label htmlFor='paid'>
           Á pagar
-					<input type='checkbox' id='paid' checked={checkbox === 'paid'} onChange={({ target }:SyntheticEvent) => handleCheckBox(target,setCheckBox)}/>
+					<input type='checkbox' id='paid' value='paid' checked={checkbox === 'paid'} onChange={({ target }:SyntheticEvent) => handleCheckBox(target,setCheckBox)}/>
 					<span></span>
 				</label>
 				<label htmlFor='received'>
           Á receber
-					<input type='checkbox' id='received' checked={checkbox === 'paid'} onChange={({ target }:SyntheticEvent) => handleCheckBox(target,setCheckBox)}/>
+					<input type='checkbox' id='received' value='received' checked={checkbox === 'received'} onChange={({ target }:SyntheticEvent) => handleCheckBox(target,setCheckBox)}/>
 					<span></span>
 				</label>
 			</div>
