@@ -1,10 +1,10 @@
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import styles from './ModalProduct.module.css';
 import camisa from '../../../Assets/images/shirt.png';
-import Loading from '../../../Helper/Modal/Load/Load';
-import handleOutSideClick from '../../../Helper/Modal/handleOutSideClick';
-import ExitModal from '../../../Helper/Modal/ExitModal';
-import ButtonSubmit from '../../../Helper/Modal/ButtonSubmit/ButtonSubmit';
+import Loading from '../../Helper/Modal/Load/Load';
+import handleOutSideClick from '../../Helper/Modal/handleOutSideClick';
+import ExitModal from '../../Helper/Modal/ExitModal/ExitModal';
+import ButtonSubmit from '../../Helper/Modal/ButtonSubmit/ButtonSubmit';
 
 interface ICreateProductProps {
   states: {

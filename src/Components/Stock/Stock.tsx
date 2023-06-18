@@ -5,13 +5,12 @@ import ModalProduct from './ModalProduct/ModalProduct';
 import { useDispatch } from 'react-redux';
 import { setTitles } from '../../store/title';
 import { Link } from 'react-router-dom';
-import ButtonAdd from '../../Helper/Modal/ButtonAdd/ButtonAdd';
-import modalHandler from '../../Helper/Modal/modalHandler';
-import handleClickModal from '../../Helper/Modal/handleClick';
+import ButtonAdd from '../Helper/Modal/ButtonAdd/ButtonAdd';
+import modalHandler from '../Helper/Modal/modalHandler';
+import handleClickModal from '../Helper/Modal/handleClick';
 
 const Stock:React.FC = () => {
 	const dispatch = useDispatch();
-	//here I have two enterModal and two activeModal, because one modal is for creating products and the other for editing
 	const [enterModalCreateProduct,setEnterModalCreateProduct] = useState<boolean>(false);
 	const [enterModalEditProduct,setEnterModalEditProduct] = useState<boolean>(false); 
 	const [activeModalCreateProduct,setActiveModalCreateProduct] = useState<boolean>(false);

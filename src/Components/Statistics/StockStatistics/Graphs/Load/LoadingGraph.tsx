@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '../../../../../Helper/Modal/Load/Load';
+import Loading from '../../../../Helper/Modal/Load/Load';
 import styles from './LoadingGraph.module.css';
 
 const Load = () => {

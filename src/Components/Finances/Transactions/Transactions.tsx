@@ -1,10 +1,12 @@
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ButtonAdd from '../../../Helper/Modal/ButtonAdd/ButtonAdd';
-import handleClickModal from '../../../Helper/Modal/handleClick';
-import modalHandler from '../../../Helper/Modal/modalHandler';
+import ButtonAdd from '../../Helper/Modal/ButtonAdd/ButtonAdd';
+import handleClickModal from '../../Helper/Modal/handleClick';
+import modalHandler from '../../Helper/Modal/modalHandler';
 import { setTitles } from '../../../store/title';
+import Delete from '../helper/Delete/Delete';
+import ModalConfirm from '../helper/ModalConfirm/ModalConfirm';
 import ModalTransaction from './ModalTransactions/ModalTransactions';
 import styles from './Transactions.module.css';
 
@@ -12,7 +14,10 @@ const Transactions:React.FC = () => {
 	const dispatch = useDispatch();
 	const [activeModal,setActiveModal] = useState<boolean>(false);
 	const [enterModal,setEnterModal] = useState<boolean>(false);
+	const [enterModalConfirm,setEnterModalConfirm] = useState<boolean>(false);
+	const [activeModalConfirm,setActiveModalConfirm] = useState<boolean>(false);
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
+	const buttonConfirmRef = useRef<HTMLButtonElement | null>(null);
 	const mainRef = useRef<HTMLElement | null>(null);
 
 	useEffect(() => {
@@ -22,6 +27,10 @@ const Transactions:React.FC = () => {
 	useEffect(() => {
 		modalHandler(activeModal,setEnterModal,buttonRef,mainRef);
 	},[activeModal]);
+
+	useEffect(() => {
+		modalHandler(activeModalConfirm,setEnterModalConfirm,buttonConfirmRef,mainRef);
+	},[activeModalConfirm]);
 
 	return (
 		<React.Fragment>
@@ -33,6 +42,7 @@ const Transactions:React.FC = () => {
 					</div>
 
 					<div className={styles.transactions}>
+						<Delete position='right' onClick={({target}:SyntheticEvent) => handleClickModal(target,setEnterModalConfirm,setActiveModalConfirm)} refButton={buttonConfirmRef}/>
 						<div className={styles.transaction}>
 							<p className={`${styles.money} ${styles.received}`}>R$ 150,00</p>
 							<p className={styles.personName}>cooltext</p>
@@ -46,6 +56,7 @@ const Transactions:React.FC = () => {
 
 
 					<div className={styles.transactions}>
+						<Delete position='right' onClick={({target}:SyntheticEvent) => handleClickModal(target,setEnterModalConfirm,setActiveModalConfirm)} refButton={buttonConfirmRef}/>
 						<div className={styles.transaction}>
 							<p className={`${styles.money} ${styles.spent}`}>R$ 123,00</p>
 							<p className={styles.personName}>cooltext</p>
@@ -60,6 +71,7 @@ const Transactions:React.FC = () => {
 			</main>
 
 			{ enterModal && <ModalTransaction states={{ activeModal,setActiveModal }}/> }
+			{ enterModalConfirm && <ModalConfirm states={{ activeModal:activeModalConfirm,setActiveModal:setActiveModalConfirm }} messages={{ message:'cool message cool',buttonMessage: 'submit' }}/> }
 		</React.Fragment>
 	);
 };

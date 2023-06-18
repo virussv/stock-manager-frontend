@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
-import ButtonSubmit from '../../../../Helper/Modal/ButtonSubmit/ButtonSubmit';
-import ExitModal from '../../../../Helper/Modal/ExitModal';
-import handleOutSideClick from '../../../../Helper/Modal/handleOutSideClick';
+import ButtonSubmit from '../../../Helper/Modal/ButtonSubmit/ButtonSubmit';
+import ExitModal from '../../../Helper/Modal/ExitModal/ExitModal';
+import handleOutSideClick from '../../../Helper/Modal/handleOutSideClick';
 import handleCheckBox from '../../helper/handleCheckBox';
 import { TCheckBoxProps } from '../../helper/TCheckbox';
 import styles from './ModalPayment.module.css';
@@ -12,7 +12,6 @@ interface IModalScheduleProps {
     setActiveModal: React.Dispatch<React.SetStateAction<boolean>>,
   },
 }
-
 
 const ModalPayments:React.FC<IModalScheduleProps> = ({ states:{ activeModal,setActiveModal } }) => {
 	const [checkbox,setCheckBox] = useState<TCheckBoxProps | null>(null); 
